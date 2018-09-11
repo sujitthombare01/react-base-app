@@ -6,6 +6,8 @@ import {SpecialRoute} from '../basic-components'
 const Contact = (props)=>{
    
     const {match,routes} = props
+    
+    
     return (<div>
                  Contact Component 
                  

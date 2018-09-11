@@ -6,8 +6,10 @@ import {SpecialRoute} from './components/basic-components'
 import {connect } from 'react-redux'
 
 import './App.css';
+import { authenticated } from './actions/authuserAction/authenticationAction'
+/*
 import  { Home ,Contact ,About ,Link1,Link2,Link3 } from './components/research-dev-componets'
-import { authenticated } from './actions/authuserAction/authenticationAction';
+
 
 
 
@@ -20,7 +22,7 @@ const routes =[{path:'/home' ,component:Home ,exact:true},
                           {path:'/contact/link3' ,component:Link3,exact:true},]
                 }
               ]
-
+*/
 
 class App extends Component {
 
@@ -30,7 +32,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
          
-          <h1 className="App-title">Welcome to React {this.props.user.username}</h1>
+          <h1 className="App-title">Welcome to React </h1>
         </header>
         <input type='button' value={this.props.isAuthenticated?'Logout':'Log In'} onClick={()=>{this.props.authentication(this.props.isAuthenticated)}}/>
                  <div className="App-intro">
@@ -44,7 +46,8 @@ class App extends Component {
                         <Link to="/contact">Contact</Link><hr/>
                      
                 
-                      {routes.map((route, i) => <SpecialRoute key={i} {...route} {...this.props} isAuthenticated={this.props.isAuthenticated} />)}
+                      {this.props.app_routes.map((route, i) => <SpecialRoute key={i} {...route}  isAuthenticated={this.props.isAuthenticated} />)}
+                   
                     </div>
                           
                   </Router>
@@ -57,8 +60,8 @@ class App extends Component {
 
 const mapStateToProps=(state)=>{
   return {
-    user: state.userAuth.user,
-    isAuthenticated :state.userAuth.isAuthenticated
+    isAuthenticated :state.userAuth.isAuthenticated,
+    app_routes:state.routeReducer.application_routes
   }
 }
 

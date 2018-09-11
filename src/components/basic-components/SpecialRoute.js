@@ -1,17 +1,17 @@
 import React from 'react'
 import {Route,Redirect} from 'react-router-dom'
 
-const SpecialRoute = route => 
+const SpecialRoute = props => 
 {
-   
-    
-return (
+//console.log('props',props);
+
+return  (
             <Route
-            exact={route.exact}
-            path={route.path}
-            render={props => route.isAuthenticated?(
+            exact={props.exact}
+            path={props.path}
+            render={prop => props.isAuthenticated?(
             
-                <route.component {...props} routes={route.routes} isAuthenticated={route.isAuthenticated} />
+                <props.component {...prop} routes={props.routes} isAuthenticated={props.isAuthenticated} />
             ):(<Redirect
                 to='/'
               />)}
