@@ -3,20 +3,33 @@ import {Route,Redirect} from 'react-router-dom'
 
 const SpecialRoute = props => 
 {
-//console.log('props',props);
 
-return  (
-            <Route
-            exact={props.exact}
-            path={props.path}
-            render={prop => props.isAuthenticated?(
-            
-                <props.component {...prop} routes={props.routes} isAuthenticated={props.isAuthenticated} />
-            ):(<Redirect
-                to='/'
-              />)}
-            />
-       )
+let routeComponent= (<div/>);
+if(props.isProtected)
+    routeComponent=  (
+                        <Route
+                        exact={props.exact}
+                        path={props.path}
+                        render={prop => props.isAuthenticated?(                        
+                            <props.component {...prop} routes={props.routes} isAuthenticated={props.isAuthenticated } isProtected={props.isProtected} />
+                        ):(<Redirect
+                            to='/userlogin'
+                        />)}
+                        />
+                     )
+else 
+        routeComponent=  (
+                            <Route
+                            exact={props.exact}
+                            path={props.path}
+                            render={prop =>                       
+                                   <props.component {...prop} routes={props.routes} isAuthenticated={props.isAuthenticated } isProtected={props.isProtected}  />
+                                  }
+                            />
+                        )
+ 
+ 
+ return routeComponent;
 };
 
 /*

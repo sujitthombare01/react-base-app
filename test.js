@@ -1,3 +1,18 @@
+let objArr={"li1":1,"li2":2}
+
+let output=Object.entries(objArr).map(([key,value])=>value);
+
+console.log(output);
+
+
+
+
+
+
+
+/*
+
+
 let input = [{
 			"CASEID": "20000856",
 			"CLIENTNAME": "Nilu phule",
@@ -45,4 +60,4 @@ let input = [{
     },[])
 
     console.log(output,output[0].lines);
-    
+    */
